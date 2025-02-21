@@ -1,0 +1,67 @@
+'''
+P1.Solano Becerra Juan Antonio
+
+Instrucciones
+Importar la biblioteca de Tkinter o PyQt.
+Crear una ventana principal.
+Agregar una etiqueta (Label) con un mensaje de bienvenida.
+Agregar un cuadro de texto (Entry) para que el usuario ingrese información.
+Agregar un botón (Button) que al presionarlo muestre un mensaje con el contenido del cuadro de texto.
+Modificar el código para cambiar el color del fondo de la ventana.
+Agregar un botón para cerrar la aplicación
+'''
+
+
+# Importar la biblioteca de Tkinter o PyQt.
+from tkinter import *
+from tkinter import ttk
+
+#Crear una ventana principal.
+root = Tk()
+
+# Cambiar el color de fondo de la ventana
+root.configure(bg='lightblue')
+
+# Crear un marco (Frame) con padding
+frm = ttk.Frame(root, padding=20)
+frm.grid()
+
+# Agregar una etiqueta (Label) con un mensaje de bienvenida.
+ttk.Label(frm, text="¡Bienvenido! ¿Cómo estás?", font=("Arial", 14)).grid(column=0, row=0, pady=10)
+
+# Agregar un cuadro de texto (Entry) para que el usuario ingrese información.
+entry = ttk.Entry(frm, width=30)
+entry.grid(column=0, row=1, pady=10)
+
+# Función para mostrar el mensaje con el contenido del cuadro de texto
+def mostrar_mensaje():
+    texto = entry.get()  # Obtener el texto del cuadro de texto
+    message_label.config(text=f"Hola, {texto}!")  # Mostrar el mensaje
+
+# Agregar un botón (Button) que al presionarlo muestre un mensaje con el contenido del cuadro de texto.
+button = ttk.Button(frm, text="Mostrar mensaje", command=mostrar_mensaje)
+button.grid(column=0, row=2, pady=10)
+
+# Crear una etiqueta para mostrar el mensaje después de presionar el botón
+message_label = ttk.Label(frm, text="", font=("Arial", 12))
+message_label.grid(column=0, row=3, pady=10)
+
+#botón para cerrar la aplicación
+quit_button = ttk.Button(frm, text="Cerrar", command=root.destroy)
+quit_button.grid(column=0, row=4, pady=10)
+
+# Iniciar la aplicación
+root.mainloop()
+
+
+'''
+Bibliografia/ consultas
+
+https://docs.python.org/es/3.13/search.html?q=ttk.entry
+https://www.google.com/search?client=opera-gx&q=Crear+una+ventana+con+Tkinter+o+PyQt.Implementar+eventos+del+mouse+(clics%2C+movimiento).Implementar+eventos+del+teclado+(presionar+teclas).Mostrar+los+eventos+capturados+en+pantalla.Detectar+eventos+de+doble+clic+y+cambiar+el+color+de+la+ventana.Asociar+el+evento+de+presionar+la+barra+espaciadora+para+limpiar+el+texto+de+la+etiqueta.&sourceid=opera&ie=UTF-8&oe=UTF-8#fpstate=ive&vld=cid:521d4785,vid:hTASCmqlr7U,st:0
+https://recursospython.com/guias-y-manuales/boton-button-en-tkinter/
+https://recursospython.com/?s=boton+que+muestre+mensaje
+https://recursospython.com/guias-y-manuales/caja-de-texto-entry-tkinter/
+https://www.datacamp.com/es/tutorial/python-block-comment
+
+'''
