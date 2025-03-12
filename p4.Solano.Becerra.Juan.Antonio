@@ -1,0 +1,48 @@
+'''
+P4.Solano Becerra Juan Antonio
+
+Creación de un Editor de Texto Simple
+Objetivo
+Desarrollar una aplicación de edición de texto con funciones de abrir, guardar y borrar contenido.
+Instrucciones
+Diseñar una interfaz con un área de texto.
+Agregar menús con opciones para abrir, guardar y borrar el texto. (NOTA: Estos botones no tendrán acciones todavía)
+Implementar atajos de teclado para cada acción.
+Agregar una opción para cambiar el color del texto. (NOTA: Este botón no tendrá acciones todavía)
+Implementar una función "Buscar y reemplazar". (NOTA: Este botón no tendrá acciones todavía)
+'''
+
+
+# Importacion de la biblioteca tkinter, se utiliza para crear interfaces graficas de usuario (GUI)
+from tkinter import *
+
+#configuracion de la raiz ( ventana principal)
+root = Tk()
+root.title("Editor de texto simple")
+
+#crea cion de menu superior
+menubar = Menu(root)
+
+#menu Archivo ( se crea un submenu dentro del menu principal)
+filemenu = Menu(menubar, tearoff=0) #tearo=0 opcion que significa que no podra separarse en una ventana flotante
+filemenu.add_command(label="Nuevo (ctrl+N)")
+filemenu.add_command(label="Guardar (ctrl+G)")
+filemenu.add_separator() #añade una linea divisora dentro del menu
+filemenu.add_command(label="salir (ctrl+q)", command=root.quit) #el argumento quit termina el bucle principal y cierra la ventana
+menubar.add_cascade(menu=filemenu, label="Archivo")
+
+root.config(menu=menubar)
+
+#menu texto se crea otro submenu esta vez debajo del menu texto
+menubartexto = Menu(root)
+filemenu = Menu(menubartexto, tearoff=0)
+filemenu.add_command(label="Color de texto (Alt+C)")
+filemenu.add_command(label="Borrar texto (Alt+E)")
+filemenu.add_command(label="Buscar y Reemplazar (Alt+B)")
+menubar.add_cascade(menu=filemenu, label="Texto")
+
+
+root.config(menu=menubar) #asocia el menu menubar con la ventana principal root, haciendo que aparezca en la parte superior
+
+#finalmente bucle de la aplicacion linea fundamental en aplicaciones tkinter
+root.mainloop()
